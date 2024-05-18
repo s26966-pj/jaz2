@@ -21,10 +21,6 @@ public class MovieServiceApplication {
 	}
 
 	private void execProcess() {
-		Movie m1 = new Movie(6,"n3", Category.COMEDY);
-		List<Movie> movieListCopy = movieService.getMovieList();
-		movieService.addMovie(m1);
-		System.out.println(movieListCopy);
-		System.out.println(movieService.getMovieList());
+
 	}
 }

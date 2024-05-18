@@ -12,11 +12,7 @@ public class MovieStorage {
     private List<Movie> movieList;
 
     public MovieStorage() {
-        Movie m1 = new Movie(1,"m1",Category.COMEDY);
-        Movie m2 = new Movie(2,"m2",Category.CRIMINAL);
-        movieList = new ArrayList<Movie>();
-        movieList.add(m1);
-        movieList.add(m2);
+
     }
 
     public void addMovie(Movie movie) {

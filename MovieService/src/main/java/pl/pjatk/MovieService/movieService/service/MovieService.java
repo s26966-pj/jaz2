@@ -3,6 +3,7 @@ package pl.pjatk.MovieService.movieService.service;
 import org.springframework.stereotype.Service;
 import pl.pjatk.MovieService.exceptions.BadRequestException;
 import pl.pjatk.MovieService.exceptions.MovieNotFoundException;
+import pl.pjatk.MovieService.movieService.repository.MovieRepository;
 import pl.pjatk.MovieService.movieService.storage.MovieStorage;
 import pl.pjatk.MovieService.movie.model.Movie;
 
@@ -11,9 +12,10 @@ import java.util.List;
 @Service
 public class MovieService {
     private final MovieStorage movieStorage;
-
-    public MovieService(MovieStorage movieStorage) {
+    private final MovieRepository movieRepository;
+    public MovieService(MovieStorage movieStorage, MovieRepository movieRepository) {
         this.movieStorage = movieStorage;
+        this.movieRepository = movieRepository;
     }
 
     public List<Movie> getMovieList() {
@@ -25,7 +27,7 @@ public class MovieService {
     }
 
     public Movie findMovieById(int id) {
-        return movieStorage.getMovieList().stream().filter(movie -> movie.getId() == id).findFirst()
+        return movieRepository.findById(id)
                 .orElseThrow(MovieNotFoundException::new);
     }
     public void updateMovie(int id, Movie newMovie) {
@@ -36,6 +38,6 @@ public class MovieService {
     }
 
     public void deleteMovie(int id) {
-        movieStorage.deleteMovie(findMovieById(id));
+        movieRepository.deleteById(id);
     }
 }
