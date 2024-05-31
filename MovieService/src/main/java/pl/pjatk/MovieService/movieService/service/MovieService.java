@@ -19,25 +19,29 @@ public class MovieService {
     }
 
     public List<Movie> getMovieList() {
-        return movieStorage.getMovieList();
+        return movieRepository.findAll();
     }
 
     public void addMovie(Movie movie) {
-        movieStorage.addMovie(movie);
+        movieRepository.save(movie);
     }
 
     public Movie findMovieById(int id) {
         return movieRepository.findById(id)
                 .orElseThrow(MovieNotFoundException::new);
     }
-    public void updateMovie(int id, Movie newMovie) {
-        Movie movie = movieStorage.getMovieList().stream().filter(m -> m.getId() == id).findFirst()
-                .orElseThrow(BadRequestException::new);
-        int index = movieStorage.getMovieList().indexOf(movie);
-        movieStorage.getMovieList().set(index,newMovie);
+
+    public void updateMovie(int id, Movie movie) {
+        if (movieRepository.findById(id).isPresent()){
+            movieRepository.save(movie);
+        }
     }
 
     public void deleteMovie(int id) {
         movieRepository.deleteById(id);
     }
+
+    public void setAvailable(int id) { movieRepository.setAsAvailable(id);}
+
+
 }

@@ -43,4 +43,10 @@ public class MovieController {
         movieService.deleteMovie(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Movie> setAvailable(@PathVariable int id) {
+        movieService.setAvailable(id);
+        return ResponseEntity.noContent().build();
+    }
 }
