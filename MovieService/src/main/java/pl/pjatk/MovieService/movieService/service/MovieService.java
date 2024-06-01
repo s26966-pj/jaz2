@@ -41,7 +41,7 @@ public class MovieService {
         movieRepository.deleteById(id);
     }
 
-    public void setAvailable(int id) { movieRepository.setAsAvailable(id);}
-
-
+    public void setAvailable(int id) {
+        //movieRepository.setAsAvailable(id);
+    }
 }
