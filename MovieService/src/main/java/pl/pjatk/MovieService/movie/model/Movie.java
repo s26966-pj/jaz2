@@ -41,4 +41,8 @@ public class Movie {
     public Boolean getIsAvailable() {
         return isAvailable;
     }
+
+    public void updateAvailability(Boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
 }

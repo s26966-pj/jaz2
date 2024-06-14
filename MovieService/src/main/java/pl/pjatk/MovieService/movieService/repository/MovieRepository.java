@@ -11,7 +11,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
-    @Modifying
-    @Query(value="update Movie set is_available = true where id = :id")
-    void setAsAvailable(@Param("id") int id);
+
 }

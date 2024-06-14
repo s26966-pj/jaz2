@@ -44,9 +44,15 @@ public class MovieController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{id}")
+    @GetMapping("/return/{id}")
     public ResponseEntity<Movie> setAvailable(@PathVariable int id) {
-        movieService.setAvailable(id);
+        movieService.setAsAvailable(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/rent/{id}")
+    public ResponseEntity<Movie> setUnavailable(@PathVariable int id) {
+        movieService.setAsUnavailable(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -10,4 +10,12 @@ public class RentalService {
     public Movie getMovie(int id) {
         return restTemplate.getForObject("http://localhost:8080/movies/" + id, Movie.class);
     }
+
+    public void returnMovie(int id) {
+        restTemplate.getForObject("http://localhost:8080/movies/return/" + id, Movie.class);
+    }
+
+    public void rentMovie(int id) {
+        restTemplate.getForObject("http://localhost:8080/movies/rent/" + id, Movie.class);
+    }
 }
