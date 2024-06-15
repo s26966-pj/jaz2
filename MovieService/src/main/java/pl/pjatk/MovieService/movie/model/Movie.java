@@ -1,18 +1,22 @@
 package pl.pjatk.MovieService.movie.model;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import pl.pjatk.MovieService.movie.enums.Category;
 
 @Entity
 public class Movie {
+    @Schema(description = "ID of the movie")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Schema(description = "Name of the movie")
     private String name;
+    @Schema(description = "Category of the movie")
     @Enumerated(EnumType.STRING)
     private Category category;
-
-    @Column(name="is_available")
+    @Schema(description = "Availability of the movie")
     private Boolean isAvailable;
 
     public Movie(Integer id, String name, Category category, Boolean isAvailable) {

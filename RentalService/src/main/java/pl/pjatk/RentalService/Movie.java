@@ -6,7 +6,6 @@ package pl.pjatk.RentalService;
         private Integer id;
         private String name;
         private Category category;
-
         private Boolean isAvailable;
 
         public Movie(Integer id, String name, Category category, Boolean isAvailable) {
